@@ -96,6 +96,7 @@ When user asks for “本周到期未完结”:
 - **Field mapping (simple):** `references/field-mapping.md`
 - **Field mapping (detailed):** `references/sync-mapping.md`
 - **Workflows (typical):** `references/workflows.md`
+- **Post-update 实战经验（2026-02-05 基线）:** `references/post-update-usage-lessons-20260205.md`
 - **Guidance docs:** `references/docs.md`
 - **Sheets 读写经验（飞书电子表格）:** `references/sheets-notes.md`
 - **需求提交指南（Inbox 必填字段、填法）:** `references/demand-submit.md`
@@ -110,6 +111,7 @@ When user asks for “本周到期未完结”:
 ## Detailed References
 - Use `references/sync-mapping.md` for full field mapping and rules.
 - Use `references/workflows.md` for typical end-to-end flows.
+- Use `references/post-update-usage-lessons-20260205.md` for practical execution patterns, common pitfalls, and SOP since 2026-02-05.
 
 ## Common Mistakes
 - Off-by-one day from UTC timestamps → always convert to Beijing time.

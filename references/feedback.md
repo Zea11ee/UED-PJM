@@ -87,3 +87,64 @@ Template:
 - What was adjusted: 单选/多选字段在当前项目管理表均统一用名称字符串，不再写 option_id
 - New rule or edge case: 若写入 option_id，Bitable 会把未知 id 当作新文本选项，需避免；如出现需立即改用名称并清理无效选项
 - 2026-02-10: Node Ti2dwYWCviH6YKkRCa8clwRKnXc resolves to obj_type=sheet (spreadsheet). lark-mcp bitable APIs return 91402 NOTEXIST when app_token=OAl2sxWZ6hwcQytrZgScNc2jnLe; sheet endpoints not available in current MCP toolset.
+
+## 2026-02-28
+- 需求：2026年春促活动上线需求：落地页+周边图设计（RM202602241041）
+- 父任务：recvcpV0kP3pm6（已存在）
+- 操作：新增 11 条 WBS；保留既有“2026年春促活动 - KV+活动页 - 设计”不变。
+- 关键修正：`Xiao` 执行人统一映射为 `肖荣健 (ou_7ef1de7929e2e2e31a0d82387a5bedff)`，非谢杜娓。
+- 时间与工时：按用户确认，全部以 Asia/Shanghai 日期写入。
+
+## 2026-02-28
+- 需求：ANTA - 购买页新增支付方式展示（AT202602271910）
+- 处理备注驱动拆分：PRD 2h、开发 3h、跟测验收 2h、测试 2h、产品验收上线 1h。
+- 用户确认排期：PRD 2/28；开发与测试 3/4；其余保持。
+- 新建父任务：recvcvJ9WEq2gq
+- 新建WBS：recvcvJeIAgNU0 / recvcvJeIALBC2 / recvcvJeIAEOW5 / recvcvJeIAH4A1 / recvcvJeIAfh5O
+
+## 2026-02-28
+- 需求：2026年红魔中东斋月节促销活动上线需求：落地页+周边设计需求（RM202602241046）
+- 用户调整：设计给麻吉；开发给徐炜健（3/10）；测试3/11；多语言改3/11；小婷任务名改“上线checklist与跟进”。
+- 新建父任务：recvcvLxtHvO5V
+- 新建WBS：recvcvLBMK7Tt0 / recvcvLBMKx67B / recvcvLBMKN2ng / recvcvLBMK91Eh / recvcvLBMKRiqx / recvcvLBMKhShd
+
+## 2026-02-28
+- 需求：红魔11 Air新颜色上线（RM202602271501）
+- 用户确认：去掉炜健开发任务；保留父任务与其余WBS；3/11配置与多语言；3/30 EBO上线走查。
+- 新建父任务：recvcvNNAiaRNu
+- 新建WBS：recvcvNRhh8m41 / recvcvNRhh7ZK4 / recvcvNRhh2wSw / recvcvNRhhxq6P / recvcvNRhhvFhq / recvcvNRhh6DQx
+
+## 2026-02-28
+- 需求：红魔项目tech站点和GG站点跳转分离（RM202602271424）
+- 用户要求：仅先安排1条WBS，3/2-3/3，小婷，产品PRD输出。
+- 新建父任务：recvcvQQ4z0qgD
+- 新建WBS：recvcvQSHzhuNi
+
+## 2026-02-28
+- 需求：红魔DTC站点运营商提示板块优化需求（RM202602261613）
+- 用户要求：仅安排1条WBS（产品PRD），负责人小婷，3/4-3/5。
+- 新建父任务：recvcvRIQr7qZN
+- 新建WBS：recvcvRLEvDyxi
+
+## 2026-02-28
+- 需求：ANTA搜索设计优化（AT202602121750）
+- 用户要求：WBS 3条，均在3/6；设计联调0.5h、开发联调2h、测试1h。
+- 新建父任务：recvcvUPBM6JRi
+- 新建WBS：recvcvUSPwdXGg / recvcvUSPwlkIA / recvcvUSPwg18x
+
+## 2026-02-28
+- 需求：ANTA - AR试鞋 / 试装功能评估（AT202602271437）
+- 用户要求：先仅安排1条产品调研PRD（3/6，8h，潘贵洪）。
+- 新建父任务：recvcwmfmiIvx8
+- 新建WBS：recvcwmihb1ivJ
+
+## 2026-02-28
+- 需求：中台问题反馈（UED202602261608）
+- 用户调整：父任务UED负责人改周嵩；仅保留2条WBS（思雯开发修复3/9-3/10；周嵩设计验收3/11），其余后续补。
+- 新建父任务：recvcwo4b2v2na
+- 新建WBS：recvcwo6JQN5c5 / recvcwo6JQ9tlp
+
+## 2026-02-28
+- 主题：沉淀 UED-PJM 上次更新（2026-02-05）后的实战经验
+- 动作：新增参考文档 `references/post-update-usage-lessons-20260205.md`，并在 `SKILL.md` 与 `README.md` 增加入口。
+- 覆盖内容：协作节奏（先草案后落库）、活动类标准拆分链路、人员 ID 解析、排期工时估算、备注与外链处理、常见错误与 SOP。
