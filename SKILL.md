@@ -39,17 +39,27 @@ Standardize the UED demand → parent task → WBS child task workflow in Feishu
    - For DuplexLink fields, use **string record_id list** (not objects).
 
 4. **Plan WBS 子任务**
+   - 先判定需求类型再拆解：轻量配置/联调类、活动两阶段类（Teasing/Launch）、问题修复类。
    - Use historical similar demands if needed.
+   - 里程碑驱动任务用倒排：先锁上线节点，再反推 PRD/设计/开发/测试/走查。
+   - 默认依赖顺序：PRD 完成早于开发；设计联调与开发可并行；上线走查绑定上线当天。
    - Convert all timestamps to Asia/Shanghai (see `references/timezone.md`).
+   - “今天/明天/后天”等相对日期，落库前必须转换为绝对日期（YYYY-MM-DD）。
    - Consider **date ranges** (启动–结束) and **预计工时** when checking load.
    - Respect weekends + company/holiday rules (see `references/holidays.md`).
+   - 轻量任务（通常 <=2h）优先最小 WBS 集合，避免过度拆分。
    - Present draft plan for confirmation before writing.
+   - **Display format requirement:** parent task and WBS drafts must be shown in a clear terminal table format (prefer boxed ASCII/Unicode table in code block). WBS table must include: 序号/任务名称/负责人/状态/预计工时/启动日期/结束日期.
 
 5. **Create WBS 子任务**
    - Required fields: 任务名称 / 父任务 / 负责人 / 状态 / 预计工时 / 启动日期 / 结束日期.
 
 6. **Record feedback**
    - Append adjustments to `references/feedback.md` after each run.
+   - If tasks were confirmed and written, **default run**:
+     `python3 scripts/project-kb/append_project_kb_entry.py --project "<PROJECT>" --demand-id "<需求编号/源编号>" --module "<页面/模块>" --change "<新增/调整功能点>" --status "已排期" --parent-record-id "<parent_rec_id>" --wbs-record-ids "<wbs_rec_a,wbs_rec_b>"`.
+   - The script inserts one project-KB event row and auto-deduplicates by `需求编号 + 页面/模块 + 功能/交互变化`.
+   - If new people were resolved, append/refresh profile rows in `references/people-profiles.md`.
 
 ## Task Naming Rules
 - Small/simple tasks may merge: “开发与跟测” / “测试与回归验证”.
@@ -69,6 +79,14 @@ Standardize the UED demand → parent task → WBS child task workflow in Feishu
 - If contacts MCP is missing or returns empty, look up historical records (WBS/项目库/任务源) and 人员映射表.
 - If still missing, use contact_v3_user_batchGetId with email/phone.
 - If still missing, ask user to provide email/phone.
+
+## Knowledge Memory Priority
+- Before broad history search, read `references/project-kb/<PROJECT>.md` and `references/case-kb` (if available) to reuse known patterns.
+- After confirmed write, persist high-value conclusions in project KB:
+  - Use line format: `YYYY-MM-DD | 需求编号 | 页面/模块 | 新增/调整功能点 | 状态(已排期/已上线) | 关联任务ID`.
+  - Only record likely-to-land decisions (already split to WBS and confirmed).
+- Maintain people cache in `references/people-profiles.md` (name/open_id/user_id/email/role/project).
+- Contacts MCP remains mandatory capability: people cache is acceleration, not source of truth.
 
 ## Task Query Priority
 - If the person is UED部门：先查「UED 项目管理 → WBS」排期。
@@ -97,6 +115,9 @@ When user asks for “本周到期未完结”:
 - **Field mapping (detailed):** `references/sync-mapping.md`
 - **Workflows (typical):** `references/workflows.md`
 - **Post-update 实战经验（2026-02-05 基线）:** `references/post-update-usage-lessons-20260205.md`
+- **项目知识库（按项目沉淀）:** `references/project-kb/README.md`
+- **案例记忆库（按需求类型模板）:** `references/case-kb/README.md`
+- **人员档案库（ID/邮箱/角色）:** `references/people-profiles.md`
 - **Guidance docs:** `references/docs.md`
 - **Sheets 读写经验（飞书电子表格）:** `references/sheets-notes.md`
 - **需求提交指南（Inbox 必填字段、填法）:** `references/demand-submit.md`
@@ -128,13 +149,20 @@ When user asks for “本周到期未完结”:
 
 ## Session enforcement additions (2026-02-05)
 - **Never write without explicit confirmation.** Always present a full draft (fields + values) and wait for “确认/落库/执行”。If user reminder about process exists in session, force confirm-before-write for the whole session.
+- **WBS display must be table-first.** For draft/review messages, render WBS in terminal-style table (readable in CLI, aligned columns). Do not output plain paragraph list unless user explicitly asks.
 - **User-specified field scope only.** When presenting for confirmation:
   - 父任务（任务源）仅列：标题、源编号、归属项目（关联）、期望上线日期、优先级、状态、描述、附件、需求方、UED 负责人。不要手动写业务线/预计开始/预计交付/其他字段；不要新增选项。
   - 子任务（WBS）仅列：任务名称、父任务（关联）、负责人、状态、预计工时、启动日期、结束日期。其它字段不动；不要新增选项。
 - **No new options/records.** For Single/MultiSelect or Lookup/DuplexLink, only use existing option text or record_id string list; never create new options.
 - **People fields need IDs.** Always resolve to open_id/user_id via contacts search; never write plain names that Feishu无法识别。
 - **Use source data first.** Demand IDs、归属项目等优先从需求/项目表查询，不要反复让用户提供现有信息。
+- **Dedupe before create.** 落库前先按“源编号”查询任务源，存在则更新/补WBS，不重复创建父任务。
+- **Post-write verification.** 写入后必须回查父任务与WBS（按源编号/父任务关联）并返回 record_id。
+- **Project KB update after write.** 需求落库后，必须将有价值的模块/功能变化追加到对应项目知识库。
+- **Project KB append is default-on.** 落库并完成回查后，默认调用 `scripts/project-kb/append_project_kb_entry.py` 自动追加事件。
+- **People profile upkeep.** 新解析到的人员信息（open_id/user_id/email/角色）应补充到人员档案库。
 - **Attachments.** If only a URL is given and no file_token, place in 描述; keep 附件字段空 unless file_token is available.
+- **Cross-base attachments.** 不同 Base/表的附件 file_token 可能不可直接复用；写入失败时将来源记录号/链接落到描述并继续流程。
 - **Timezone.** All dates are Asia/Shanghai; convert timestamps accordingly.
 - **Date filtering (Bitable API).** Supported operators for Date fields: `is`, `isGreater`, `isLess`, `isEmpty`, `isNotEmpty`. Value formats:
   - Exact date: `["ExactDate","<ms_timestamp>"]` (ms since epoch; converted to local 00:00 of doc timezone).

@@ -5,6 +5,19 @@ UED-PJM 用于标准化飞书 Bitable 的 UED 需求执行链路：
 
 English guide: see `README.md`.
 
+## 最近更新（2026-03-05）
+- 新增项目知识库与案例记忆库目录：
+  - `references/project-kb/`
+  - `references/case-kb/`
+- 新增人员档案缓存，用于复用执行人 ID：
+  - `references/people-profiles.md`
+- 新增落库后项目知识自动沉淀脚本（默认流程）：
+  - `scripts/project-kb/append_project_kb_entry.py`
+- 流程与文档同步更新：
+  - WBS 草案默认以表格形式展示后再确认
+  - 优先使用项目知识库进行近似需求判断
+  - 父任务创建前按源编号去重，落库后强制回查校验
+
 ## 最近更新（2026-02-28）
 - 新增“上次更新后实战经验”文档：  
   `references/post-update-usage-lessons-20260205.md`
@@ -77,3 +90,12 @@ cp -R ./* ~/.codex/skills/UED-PJM/
 ## 维护策略
 - 保持 `SKILL.md`、`README.md`、`README.zh.md` 与 `references/` 同步更新。
 - 每次关键实操后在 `references/feedback.md` 追加简要记录。
+
+## 安装补充（Superpowers 原生发现）
+- Superpowers 已切换到 native skill discovery。
+- 一次性初始化：
+```bash
+mkdir -p ~/.agents/skills
+ln -s ~/.codex/superpowers/skills ~/.agents/skills/superpowers
+```
+- 不要再执行已移除的 bootstrap 命令。

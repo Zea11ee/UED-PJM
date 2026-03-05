@@ -148,3 +148,147 @@ Template:
 - 主题：沉淀 UED-PJM 上次更新（2026-02-05）后的实战经验
 - 动作：新增参考文档 `references/post-update-usage-lessons-20260205.md`，并在 `SKILL.md` 与 `README.md` 增加入口。
 - 覆盖内容：协作节奏（先草案后落库）、活动类标准拆分链路、人员 ID 解析、排期工时估算、备注与外链处理、常见错误与 SOP。
+
+## 2026-03-02
+- 需求：ANTA - AR试鞋 / 试装功能评估（AT202602271437）
+- 用户要求：仅保留贵洪1条调研任务，8h；并根据实际负载改期。
+- 落库结果：更新现有WBS `recvcwmihb1ivJ` 启动/结束至 2026-03-03（Asia/Shanghai），工时保持8h。
+
+## 2026-03-02
+- 需求：创建 Skill，涵盖从素材解析、打标、简修到生成素材审计报告（AX202602102125）
+- 用户要求：补建3条WBS（2/11与2/24历史已完成 + 3/9半天调整），任务名采用“skill 制作”。
+- 落库结果：在父任务 `recvaPxm4A1mlr` 下创建
+  - `recvcGbFCzRVjP` 素材处理Skill（1+2+4）制作（已完成，8h，2026-02-11）
+  - `recvcGbI4EmcZq` 选图Skill（3，含选图+处理图）制作（已完成，8h，2026-02-24）
+  - `recvcGbI4EtrfD` 素材处理/选图Skill联调修改调整（未启动，4h，2026-03-09）
+
+## 2026-03-02
+- 主题：WBS 展示格式规范补充
+- 用户要求：WBS 在 CLI 中必须以表格形式展示（风格清晰，类似 Claude Code/OpenClaw 终端表格），不要纯文本段落。
+- 更新内容：
+  - `SKILL.md`：新增 WBS 表格展示硬性要求（Plan 阶段 + Session enforcement）
+  - `references/workflows.md`：新增 WBS 展示格式小节
+  - `README.md`：能力说明增加“WBS 终端表格展示”
+
+## 2026-03-03
+- 需求：红魔11 Pro&11 Air需要上传软件更新链接（RM202602281732）
+- 用户要求：按固定轻量流程拆分并落库（设计0.5h透明底图 + Zendesk卡片新增上传1h）。
+- 落库结果：
+  - 父任务：`recvcNId53aDI2`（未启动，期望上线 2026-03-03）
+  - WBS：`recvcNIh8NCJmH` 透明底产品图输出（黄钰，0.5h，2026-03-03）
+  - WBS：`recvcNIh8N9y0H` Zendesk卡片新增并上传图片（洪贵权，1h，2026-03-03）
+
+## 2026-03-03
+- 需求：日本站点11Air“商品管理页”相关产品同步（手机&手机膜&手机壳）（RM202603021624）
+- 用户要求：父任务+单条WBS，均给王小婷；WBS仅产品配置，0.5h，且昨日已完成；实际工时同步0.5h。
+- 落库结果：
+  - 父任务：`recvcNJpIhW9Dr`（已完成）
+  - WBS：`recvcNJrKMC1aA` 日本站点11Air商品管理页相关产品同步 - 产品配置（已完成，预计0.5h，实际0.5h，2026-03-02）
+- 备注：需求总表附件 file_token 不能直接写入项目管理表附件（跨表归属校验失败）；已在父任务描述中保留来源记录号 `recRC4Dvtc` 供追溯。
+
+## 2026-03-03
+- 需求：红魔配件collection页面优化需求（RM202603021132）
+- 用户要求：父任务+2条WBS；小婷产品配置（明天1d），炜健穿插0.5h处理filter dropdown默认展开。
+- 落库结果：
+  - 父任务：`recvcNLpJNzCBh`
+  - WBS：`recvcNLsajnaye` 红魔配件collection页面优化 - 产品配置（王小婷，8h，2026-03-04）
+  - WBS：`recvcNLsajF9h1` 红魔配件collection页面优化 - filter dropdown默认展开调整（徐炜健，0.5h，2026-03-04）
+
+## 2026-03-03
+- 需求：ANTA EU 导航栏产品新增标签需求（AT202602281220）
+- 用户要求：开发安排东林在3.6；设计联调与开发并行同为3.6；PRD在开发前完成；后续测试/跟测/产品验收/上线走查也统一放到3.6。
+- 落库结果：
+  - 父任务：`recvcO3Q1RCAHt`
+  - WBS：`recvcO3UfiufjK` 产品PRD（潘贵洪，1h，2026-03-05）
+  - WBS：`recvcO3UfiEp5Y` 设计联调（周嵩，2h，2026-03-06）
+  - WBS：`recvcO3UfiSxIw` 开发实现（廖东林，4h，2026-03-06）
+  - WBS：`recvcO3Ufilhsl` 测试与回归（胡超，3h，2026-03-06）
+  - WBS：`recvcO3UfifbX3` 跟测与验收（廖东林，4h，2026-03-06）
+  - WBS：`recvcO3UfiZN77` 产品验收（潘贵洪，1h，2026-03-06）
+  - WBS：`recvcO3UfiT77g` 上线走查（胡超，1h，2026-03-06）
+
+## 2026-03-03
+- 需求：ANTA EU 3月Kyrie BDay 活动需求（AT202602281210）
+- 用户要求：设计负责人固定为刘佳莹；两阶段推进（Teasing 3/10，Launch 3/16）；刘佳莹任务可从3/4启动，Launch设计紧接Teasing处理。
+- 落库结果：
+  - 父任务：`recvcOkH9TWorQ`
+  - WBS：`recvcOkKSWjhRH` 订阅与埋点配置（Teasing）（潘贵洪，2h，3/5）
+  - WBS：`recvcOkKSW4OxD` Teasing落地页设计与配置（刘佳莹，12h，3/4-3/5）
+  - WBS：`recvcOkKSWUPdV` Teasing KV与周边延展（刘佳莹，12h，3/6-3/9）
+  - WBS：`recvcOkKSWg3qP` Launch设计素材（刘佳莹，8h，3/10）
+  - WBS：`recvcOkKSWfnk9` Teasing上线走查（胡超，2h，3/10）
+  - WBS：`recvcOkKSWDk3x` Launch上线走查（胡超，2h，3/16）
+
+## 2026-03-03
+- 主题：近期需求梳理经验沉淀到 UED-PJM skill
+- 用户诉求：将最近多轮需求拆解与排期经验（类型化拆分、节点倒排、确认前不落库、去重回查、附件跨表降级）固化进技能文档。
+- 更新文件：
+  - `SKILL.md`：新增 WBS 规划规则与 Session enforcement 补充（去重、回查、跨表附件）。
+  - `README.md`：补充能力说明（类型判定、节点倒排、绝对日期、去重回查）与限制（跨表附件 token）。
+  - `references/post-update-usage-lessons-20260205.md`：新增“近期补充经验（2026-03-03）”。
+  - `references/workflows.md`：新增“节点倒排与轻重拆分”“落库稳定性控制”流程段。
+
+## 2026-03-03
+- 主题：新增“项目知识库 + 人员档案库 + 案例记忆库”机制
+- 用户诉求：
+  - 减少每次梳理WBS时的全量历史检索成本。
+  - 需求拆分并落库后，把有价值的模块/功能变化沉淀到项目知识库。
+  - 维护人员档案（user_id/open_id/email/角色）以减少重复联系人查询，但保留 contacts MCP 能力与校验。
+- 更新文件：
+  - `SKILL.md`：新增 Knowledge Memory Priority、落库后强制更新项目KB/人员档案。
+  - `README.md`：能力与限制新增知识库机制说明。
+  - `references/workflows.md`：主流程新增“先读KB、落库后反写KB”。
+  - `references/people-resolution.md`：新增档案库联动规则。
+  - `references/docs.md`：新增本地知识库索引。
+  - 新增 `references/project-kb/`（README、模板、ANTA/REDMAGIC/HYPERSHELL）。
+  - 新增 `references/case-kb/`（README、活动双阶段模板、轻量配置模板）。
+  - 新增 `references/people-profiles.md`（人员档案表）。
+
+## 2026-03-04
+- 主题：落库后自动追加项目KB条目（默认开启）
+- 用户诉求：将“需求落库→项目知识沉淀”从手工步骤升级为默认自动动作。
+- 更新内容：
+  - 新增脚本 `scripts/project-kb/append_project_kb_entry.py`：
+    - 按项目自动定位/创建 `references/project-kb/<PROJECT>.md`；
+    - 追加“已确认变更事件”表格行；
+    - 默认按 `需求编号 + 页面/模块 + 功能/交互变化` 去重。
+  - `SKILL.md`：Step 6 改为默认执行脚本，并在 Session enforcement 增加 default-on 约束。
+  - `references/workflows.md`：外部需求与已有任务源流程均改为脚本自动沉淀。
+  - `README.md`：能力补充“Post-write project KB auto append”。
+  - `scripts/README.md` 与 `references/project-kb/README.md`：新增脚本使用说明。
+
+## 2026-03-04
+- 需求：线上环境跨国家切换后筛选侧边栏丢失（QXBUG202603041450）
+- 用户要求：开发负责人改为 Dina（林梓仪）并直接落库。
+- 落库结果：
+  - 父任务：`recvcSAD1ZFdiQ`（LiberNovo，P2，未启动，期望上线 2026-03-05）
+  - WBS：`recvcSAFI7Ksvp` 备件集合页筛选侧边栏丢失 - 开发处理（林梓仪，3h，2026-03-04）
+  - WBS：`recvcSAFI719Vx` 备件集合页筛选侧边栏丢失 - 复现与跟测（周小莉，2h，2026-03-04）
+- 知识沉淀：
+  - 已自动追加项目KB：`references/project-kb/LIBERNOVO.md`
+  - 事件行：`2026-03-04 | QXBUG202603041450 | 备件集合页 | 跨国家站点切换后筛选侧边栏丢失修复（US→DE） | 已排期 | recvcSAD1ZFdiQ / recvcSAFI7Ksvp / recvcSAFI719Vx`
+
+## 2026-03-05
+- 需求：ANTA EU 非可售国家跳转到EU站（AT202602261117）新增开发排查子任务
+- 用户要求：仅在该父任务下新增1条开发排查WBS，负责人东林，排期 2026-03-02 ~ 2026-03-05，预计 6h。
+- 落库结果：
+  - 父任务：`recvcvcyS5RkPX`（复用）
+  - WBS：`recvcXrLrXxcku` ANTA EU 非可售国家跳转到EU站 - 开发排查（廖东林，未启动，6h，2026-03-02~2026-03-05）
+- 知识沉淀：
+  - 已自动追加项目KB：`references/project-kb/ANTA.md`
+  - 事件行：`2026-03-05 | AT202602261117 | 国家跳转逻辑 | 新增开发排查子任务（东林，3.2-3.5，6h） | 已排期 | recvcvcyS5RkPX / recvcXrLrXxcku`
+
+## 2026-03-05
+- 需求：红魔FAQ板块内容统一配置功能需求（RM202603031834）
+- 用户要求：最小工作项拆分并按依赖顺序排期；工时调整为 PRD 3h、开发 4h、测试 2h、测试反馈修改 2h、回归 1h、上线 1h；去除配置与产品验收任务。
+- 落库结果：
+  - 父任务：`recvcXFNyDoZs9`（RedMagic，P2，未启动，期望上线 2026-03-19）
+  - WBS：`recvcXFRkyVWRG` FAQ统一配置 - PRD（王小婷，3h，2026-03-10）
+  - WBS：`recvcXFRkyxwCL` FAQ统一配置 - 开发（徐炜健，4h，2026-03-11）
+  - WBS：`recvcXFRky7FIu` FAQ统一配置 - 测试（肖荣健，2h，2026-03-12）
+  - WBS：`recvcXFRkyVjOZ` FAQ统一配置 - 测试反馈修改（徐炜健，2h，2026-03-13）
+  - WBS：`recvcXFRkylRF8` FAQ统一配置 - 回归验证（肖荣健，1h，2026-03-16）
+  - WBS：`recvcXFRkyEOno` FAQ统一配置 - 上线走查（肖荣健，1h，2026-03-19）
+- 知识沉淀：
+  - 已自动追加项目KB：`references/project-kb/REDMAGIC.md`
+  - 事件行：`2026-03-05 | RM202603031834 | FAQ板块 | 新增metaobject统一配置（含多语言）并保留主产品自定义覆盖 | 已排期 | recvcXFNyDoZs9 / recvcXFRkyVWRG / recvcXFRkyxwCL / recvcXFRky7FIu / recvcXFRkyVjOZ / recvcXFRkylRF8 / recvcXFRkyEOno`
