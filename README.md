@@ -1,29 +1,20 @@
 # UED-PJM
 
 ## Overview
-UED-PJM documents the standard workflow for UED demand intake, parent task sync, and WBS scheduling using Feishu Bitable (via lark-mcp).
-
-## What's New (2026-03-05)
-- Added project knowledge base and case memory structure:
-  - `references/project-kb/`
-  - `references/case-kb/`
-- Added people profile cache for faster assignee ID reuse:
-  - `references/people-profiles.md`
-- Added post-write project KB automation script (default-on flow):
-  - `scripts/project-kb/append_project_kb_entry.py`
-- Updated workflow/docs to enforce:
-  - WBS table-style draft output before confirmation
-  - project knowledge-first lookup
-  - dedupe-by-source before parent creation and post-write verification
+UED-PJM documents the standard workflow for UED demand intake, parent task sync, and WBS scheduling using Feishu Bitable with official `lark-cli` as the default Feishu execution layer.
 
 ## Capabilities (Current)
-### Feishu Bitable (lark-mcp)
+### Feishu Execution Layer (`lark-cli`)
 - List Base tables
 - Read table fields (schema)
 - Search records (filters + sorting)
 - Create records (single/batch)
 - Update records (single/batch)
 - Create Base app and tables (when needed)
+- Search employees and resolve IDs
+- Query Feishu tasks when WBS is not the primary source
+- Check calendar freebusy / schedule conflicts
+- Resolve wiki / doc / drive links before planning or writing
 
 ### UED Project Workflow (UED-PJM)
 - Demand -> parent task -> WBS child task mapping and sync
@@ -36,8 +27,10 @@ UED-PJM documents the standard workflow for UED demand intake, parent task sync,
 - Beijing time scheduling with weekend/holiday constraints
 - Relative date normalization (today/tomorrow -> absolute YYYY-MM-DD before write)
 - Weekly “本周到期未完结” query in WBS (status != 已完成, end date within current week, Asia/Shanghai)
+- Personnel “目前/手上/在做” WBS query with full pagination and non-closed status filter (status not in 已完成/废弃, includes 进行中)
 - Load checking using date ranges + estimated hours
 - Deduplicate by 源编号 before parent creation, then verify writes by source/parent link
+- Parent task `record_id` must be parsed explicitly or re-queried from `任务源`; never infer it from the first `rec*` token in a CLI response
 - Post-write project knowledge capture (project KB event entry per confirmed demand)
 - Post-write project KB auto append via `scripts/project-kb/append_project_kb_entry.py` (default-on)
 - Pre-write field review for approval
@@ -47,7 +40,7 @@ UED-PJM documents the standard workflow for UED demand intake, parent task sync,
 - Feedback capture into references/feedback.md
 
 ### People Resolution
-- Resolve open_id/user_id by contacts MCP name search (中文/英文/拼音/近似)
+- Resolve open_id/user_id by official contact lookup (中文/英文/拼音/近似)
 - Resolve open_id/user_id by matching historical records
 - Resolve user_id via email/phone (contact_v3_user_batchGetId)
 - Maintain reusable personnel mapping table
@@ -76,19 +69,10 @@ UED-PJM documents the standard workflow for UED demand intake, parent task sync,
 - Feishu 任务功能接口不可用时，无法直接读取任务块/任务列表
 - docx 原始内容可能不包含任务块/表格，需要任务 API 或人工确认
 - Attachment file_token may fail across different bases/tables; fallback is to keep attachment source in 描述
-- People cache can become stale; contacts MCP remains required for final validation
-- 启用技能时自动探测/调用 lark-mcp 与 lark-contacts-mcp（资源列表为空也继续）；若反复调用仍报 Method not found，需在当前会话注册后再试
+- People cache can become stale; live contact lookup remains the source of truth
+- LinkFlow multi-user scenarios should keep using LinkFlow's own OAuth / token-store model for user-scoped operations rather than a single shared container login
 - Link penetration depth is capped at 2 hops
 
 ## Update Policy
 - When UED-PJM is upgraded, update this README.md and any affected reference files
 - Keep the capability list and limitations in sync with actual tool access
-
-## Installation Note (Superpowers Native Discovery)
-- Superpowers now uses native skill discovery.
-- One-time setup:
-```bash
-mkdir -p ~/.agents/skills
-ln -s ~/.codex/superpowers/skills ~/.agents/skills/superpowers
-```
-- Do not run the removed bootstrap command.

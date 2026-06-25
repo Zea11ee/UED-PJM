@@ -10,5 +10,8 @@
 3. 不足部分再回查 Bitable 历史记录。
 
 ## 现有模板
-- `campaign-two-phase.md`
-- `lightweight-config.md`
+- `campaign-two-phase.md` — 活动双阶段（Teasing + Launch）
+- `lightweight-config.md` — 轻量配置/联调
+- `bug-fix.md` — 问题修复类（Bug Fix / Incident）
+- `research-evaluation.md` — 产品调研/评估类
+- `product-sync.md` — 商品/产品同步配置类

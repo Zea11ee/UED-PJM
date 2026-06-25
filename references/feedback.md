@@ -6,6 +6,11 @@ Template:
 - What worked:
 - What was adjusted:
 - New rule or edge case:
+- Date: 2026-05-18
+- Scenario: 人员“目前手上任务”查询口径
+- What worked: 复盘周嵩 WBS 查询发现正确口径应为负责人匹配 + 状态未关闭，并需全量分页
+- What was adjusted: SKILL.md / workflows.md / bitable-notes.md / tests.md / README.md 增加“手上任务”硬规则
+- New rule or edge case: “手上任务”不得默认等同于“未启动”；必须包含进行中，排除已完成/废弃，WBS 全量分页，任务源仅作上下文补充
 - Date: 2026-01-29
 - Scenario: ANTA - Shopify Order Cancel邮件模版更新 (任务源+WBS)
 - What worked: 提前确认任务源字段、优先级补齐、WBS 执行人按 ANTA 固定角色映射
@@ -292,3 +297,127 @@ Template:
 - 知识沉淀：
   - 已自动追加项目KB：`references/project-kb/REDMAGIC.md`
   - 事件行：`2026-03-05 | RM202603031834 | FAQ板块 | 新增metaobject统一配置（含多语言）并保留主产品自定义覆盖 | 已排期 | recvcXFNyDoZs9 / recvcXFRkyVWRG / recvcXFRkyxwCL / recvcXFRky7FIu / recvcXFRkyVjOZ / recvcXFRkylRF8 / recvcXFRkyEOno`
+
+## 2026-04-15
+- 需求：`Hypershell 3.0规范与新页面` 在已有首页相关 WBS 基础上补充剩余页面任务。
+- 用户要求：
+  - 改按页面维度拆分，不按整体工作包拆分。
+  - 首页相关已有任务不重复新增。
+  - 页面分组为：品牌、产品列表*2、Contact us、tutorial、博客列表*2/博客内容；其中博客组最后排。
+  - 人员固定为：设计周嵩、开发严思雯、测试谢杜娓、产品潘贵洪。
+  - 排期需从原首页任务后衔接，品牌页设计稿从 `2026-04-08` 启动。
+- 落库结果：
+  - 父任务：`recvfC4zwYG9iL`（复用）
+  - 新增 WBS：共 `21` 条
+  - 关键分组：
+    - 品牌：PRD / 设计稿 / 开发与跟测
+    - 产品列表*2：PRD / 设计稿 / 开发与跟测
+    - Contact us：设计稿 / 开发与跟测
+    - tutorial：设计稿 / 开发与跟测
+    - 第一轮UAT：品牌、产品列表、Contact、tutorial
+    - 博客组：PRD / 设计稿 / 开发与跟测
+    - 第二轮UAT：博客列表、博客内容
+    - 全局收尾：设计反馈锁稿、设计规范输出与确认、内部验收与英文配置、多语言配置、上线走查
+- 知识沉淀：
+  - 已自动追加项目KB：`references/project-kb/HYPERSHELL.md`
+
+## 2026-04-27
+- 需求：`红魔11SPro新品上新活动和设计需求`（`RM202604201221`）。
+- 用户要求：
+  - 参考 `红魔Astra 2` 新品发布排期逻辑。
+  - 五阶段推进：Teasing `2026-05-18`、Launch `2026-05-27`、EBO `2026-06-03`、EA `2026-06-09`、Open Sales `2026-06-10`。
+  - 需求梳理改为“需求梳理与跟进”，可与设计并行。
+  - EA KV 给黄镇蓝；Launch 参数页/对比页只做配置，不安排设计和开发。
+  - 刘增芳休假，PDP相关设计从 `2026-05-06` 启动；黄镇蓝负责的 Teasing 设计从 `2026-04-28` 启动。
+- 落库结果：
+  - 父任务：`recvhYq0LSMduX`
+  - WBS：共 `73` 条
+  - 阶段分布：Teasing `13` 条、Launch `20` 条、EBO `14` 条、EA `13` 条、Open Sales `13` 条
+  - 父任务回查：子任务关联 `73` 条，计划工时 `590h`
+- 知识沉淀：
+  - 已自动追加项目KB：`references/project-kb/REDMAGIC.md`
+  - 已更新人员档案：王小婷、廖东林、徐炜健、周智莉、肖荣健、钟文清，并新增刘增芳、黄镇蓝。
+  - 事件行：`2026-04-15 | recvfC4zwYG9iL | 3.0规范与新页面 | 追加品牌/产品列表/轻量页/博客组及两轮UAT、多语言配置、上线走查 | 已排期 | recvgQe7ed29NI / recvgQe7edifCL / recvgQe7edBNEe / recvgQe7edIrMY / recvgQe7edJEix / recvgQe7eddEZ1 / recvgQe7edoZ0A / recvgQe7edPcXI / recvgQe7edZxao / recvgQe7edi7mn / recvgQe7edoD7f / recvgQe7ed6eal / recvgQe7ed1CHN / recvgQe7edyl3w / recvgQe7edEGGb / recvgQe7ed84Un / recvgQe7edaI44 / recvgQe7edpPfU / recvgQe7edes1U / recvgQe7ede8RL / recvgQe7edr8Iq`
+
+## 2026-04-15
+- 需求：`Hypershell 3.0规范与新页面` 二次调整排期。
+- 用户要求：
+  - 首页开发提测延期到 `2026-04-17`。
+  - 后续开发顺序调整为：`首页 -> 产品列表 -> 品牌 -> Contact us/tutorial -> 博客组`。
+  - 杜娓后续测试/UAT任务顺延。
+  - `Contact us` 与 `tutorial` 不再拆分，合并为一组任务。
+- 调整结果：
+  - 首页开发：`recvfC5tmNwfwX` 结束日期改为 `2026-04-17`
+  - 产品列表开发与跟测：`recvgQe7eddEZ1` 保持在 `2026-04-20 ~ 2026-04-24`
+  - 品牌开发与跟测：`recvgQe7edBNEe` 调整为 `2026-04-27 ~ 2026-04-30`
+  - 合并轻量页设计：`recvgQe7edPcXI` 改为 `Contact us / tutorial - 设计稿`
+  - 合并轻量页开发：`recvgQe7edZxao` 改为 `Contact us / tutorial - 开发与跟测`
+  - 删除拆分任务：`recvgQe7edi7mn`、`recvgQe7edoD7f`
+  - 第一轮UAT：`recvgQe7ed6eal` 调整为 `2026-05-08 ~ 2026-05-11`
+  - 博客组开发与跟测：`recvgQe7edEGGb` 调整为 `2026-05-08 ~ 2026-05-20`
+  - 第二轮UAT：`recvgQe7ed84Un` 调整为 `2026-05-21 ~ 2026-05-22`
+- 知识沉淀：
+  - 已自动追加项目KB：`references/project-kb/HYPERSHELL.md`
+
+## 2026-04-15
+- 需求：`Hypershell 3.0规范与新页面` 三次调整排期。
+- 用户要求：
+  - 周嵩设计任务恢复到上一个版本的排期，不再压缩到 `4.10` 全部完成。
+  - 杜娓任务不再使用 `UAT` 命名，改为按页面逐项测试。
+  - 首页开发 `4.17` 提测后，首页测试排到 `2026-04-20`，后续页面依开发完成顺序测试。
+- 调整结果：
+  - 周嵩设计任务恢复：
+    - `recvgQe7edJEix` 产品列表*2 - 设计稿：`2026-04-11 ~ 2026-04-15`
+    - `recvgQe7edPcXI` Contact us / tutorial - 设计稿：`2026-04-16 ~ 2026-04-17`
+    - `recvgQe7ed1CHN` 博客组 - PRD：`2026-04-27`
+    - `recvgQe7edyl3w` 博客列表*2 / 博客内容 - 设计稿：`2026-04-27 ~ 2026-04-30`
+  - 原 `UAT` 任务改名为页面测试：
+    - `recvgQe7ed6eal` -> 首页 - 测试（`8h`，`2026-04-20`）
+    - `recvgQe7ed84Un` -> 博客列表*2 / 博客内容 - 测试（`16h`，`2026-05-21 ~ 2026-05-22`）
+  - 新增页面测试：
+    - `recvgQn3LJ3qXv` 产品列表*2 - 测试（`8h`，`2026-04-27`）
+    - `recvgQn3LJJlyF` 品牌 - 测试（`8h`，`2026-05-06`）
+    - `recvgQn3LJ1PQ3` Contact us / tutorial - 测试（`4h`，`2026-05-08`）
+- 知识沉淀：
+  - 已自动追加项目KB：`references/project-kb/HYPERSHELL.md`
+
+## 2026-05-07
+- 需求：`红魔Astra 2新品上线活动与设计需求`（`RM202604021531`）调整排期。
+- 用户要求：
+  - 参考 `红魔11SPro新品上新活动和设计需求` 当前 WBS 安排。
+  - Astra II 新节点调整为：Teasing `2026-05-25`、Launch `2026-06-15`、EBO `2026-06-24`、EA `2026-06-30`、OP `2026-07-01`。
+  - 用户已手动安排 Teasing 部分任务，其余任务补齐负责人和排期。
+- 调整结果：
+  - 父任务：`recvgmLT0NkyPY`
+  - WBS：更新现有 `70` 条，不新增。
+  - 阶段分布：Teasing `14` 条、Launch `17` 条、EBO `13` 条、EA `13` 条、Open Sales `13` 条。
+  - 父任务期望上线日期由旧值 `2026-05-27` 改为 `2026-07-01`。
+  - 将 `需求梳理与PRD` 统一改名为 `需求梳理与跟进`。
+  - 避开 `2026-06-19` 端午假期和周末；Teasing 多语言配置从周末 `2026-05-23 ~ 2026-05-24` 调整为 `2026-05-21 ~ 2026-05-22`。
+- 校验结果：
+  - 父任务回查：子任务关联 `70` 条，计划工时 `624h`。
+  - 全量 WBS 回查：负责人、启动日期、结束日期均无空值；无 `需求梳理与PRD` 旧命名残留。
+  - 二次补正：`Launch - PDP开发 I/II` 首次回读工时被显示为 `20h`，已单独补写并回读确认为 `48h` / `96h`。
+- 知识沉淀：
+  - 已自动追加项目KB：`references/project-kb/REDMAGIC.md`
+## 2026-06-25
+- 需求：新评审需求批量排期落库。
+- 用户要求：
+  - `L'Atitude 52°N July Campaign POA | Berlin Fashion Week`（`LT202606241205`）按 `2026-07-08` 上线排期，设计给李晋铖，测试/回归/上线走查给谢杜娓。
+  - `Swtich to REDMAGIC活动, 建立落地页`（`RM202606171846`）按 `2026-07-30` 上线排期，黄钰从 `2026-07-01` 启动设计。
+  - `SpeakON网站模块优化和细节调整` 使用单一父任务源编号 `SPK202606241931`，合并 `SPK202606181028`，按本质周期排至 `2026-07-17`。
+- 落库结果：
+  - L'Atitude 父任务：`recvnxEde7QZTF`，WBS `11` 条，计划工时 `78h`。
+  - RedMagic 父任务：`recvnxEdGuQRPE`，WBS `12` 条，计划工时 `110h`。
+  - SpeakON 父任务：`recvnxEe8riO6c`，WBS `10` 条，计划工时 `145h`。
+- 校验结果：
+  - 三个父任务均已回查，子任务数量、源编号、负责人、启动日期、结束日期完整。
+  - L'Atitude 的 `测试` / `回归验证` / `上线走查` 均确认为谢杜娓。
+  - SpeakON 父任务和 WBS 源编号均为 `SPK202606241931`。
+- 执行注意：
+  - 本次首次写入时 `record-upsert` 返回体中包含了关联项目 ID，脚本误提取为父任务 ID，导致前 10 条 L'Atitude WBS 一度关联到项目库记录 `recvd4wktEf7lE`。
+  - 已立即中止、回查真实父任务 ID，并把 10 条 WBS 的 `父任务` 修正为 `recvnxEde7QZTF`。
+  - 后续脚本提取新建记录 ID 不应从整段返回 JSON 中正则匹配第一个 `rec*`，必须通过创建后按源编号/标题回查真实任务源 record_id，或解析明确的 `record_id` 字段。
+- 知识沉淀：
+  - 已追加项目KB：`references/project-kb/LATITUDE.md`、`references/project-kb/REDMAGIC.md`、`references/project-kb/SPEAKON.md`。
+  - 已更新人员档案：黄钰、严思雯，并新增张秋格、李晋铖、於良润、谢杜娓。

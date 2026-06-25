@@ -47,6 +47,15 @@ These scenarios document expected failure modes when the UED-PJM skill is not us
   - 未优先查 UED WBS，直接尝试 Feishu 任务
   - 忽略“非 UED 才查飞书任务”的优先级规则
 
+### Scenario F2: “手上任务”状态口径 + 分页完整性
+- Prompt: “周嵩目前手上的任务有哪些。”
+- Pressures: 自然语言“手上”含义模糊、WBS 分页、历史未清理任务干扰、任务源/WBS 混用。
+- Baseline failures observed/expected:
+  - 把“手上任务”默认解释为 `状态=未启动`
+  - 漏掉 `进行中` WBS
+  - 只读第一页或首批匹配，导致后续分页中的 Hypershell / LiberNovo 等任务缺失
+  - 把任务源父任务混入主任务清单，而不是作为上下文补充
+
 ### Scenario G: 文档含任务块/表格无法直接读取
 - Prompt: “读取工作进度总表并提取 1 月日期条目。”
 - Pressures: 文档内为飞书任务块/表格，原始 docx 输出不完整。
@@ -89,6 +98,10 @@ These scenarios document expected failure modes when the UED-PJM skill is not us
 ### Scenario F
 - Action: if person is UED member, check WBS first; only if non-UED or WBS empty, then check Feishu tasks (if available).
 - Expected pass: WBS-first for UED; no premature Feishu task lookup.
+
+### Scenario F2
+- Action: resolve 周嵩, read `UED 项目管理 → WBS` with full pagination, filter `负责人=周嵩` and `状态 not in (已完成, 废弃)`, then separate current/recent from stale records.
+- Expected pass: query includes both `进行中` and `未启动`; it must not report only 17 `未启动` rows. Known regression baseline on 2026-05-18: full non-closed WBS count was 32 (3 进行中, 29 未启动), with 8 current/recent rows.
 
 ### Scenario G
 - Action: note docx rawContent may omit task blocks; request export/alternative source or use task API (if available).

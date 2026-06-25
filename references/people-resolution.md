@@ -1,15 +1,20 @@
 # 人员解析（open_id / user_id）
 
 ## 使用顺序
-1) lark-contacts-mcp 名称搜索（中文/英文/拼音/近似匹配）。
-2) 历史记录匹配（WBS/项目库/任务源/人员映射表）。
-3) contact_v3_user_batchGetId（email/phone）。
-4) 仍缺失 → 向需求方要 email/phone。
+1) 先查 `people-profiles.md`（按姓名/常用称呼快速匹配）。
+2) 仅在以下情况调用 lark-contacts-mcp 名称搜索（中文/英文/拼音/近似匹配）：
+   - 人员库无该人；
+   - 人员库缺 open_id/user_id；
+   - 写入时报人员字段错误；
+   - 同名冲突无法唯一确定。
+3) 历史记录匹配（WBS/项目库/任务源/人员映射表）。
+4) contact_v3_user_batchGetId（email/phone）。
+5) 仍缺失 → 向需求方要 email/phone。
 
 ## 档案库联动
 - 常用人员缓存维护在 `people-profiles.md`（name/open_id/user_id/email/role/project）。
-- 调度顺序：先读档案库做快速匹配，再用 contacts MCP 校验/补全。
-- contacts MCP 必须可用；档案库仅用于提效，不替代实时查询。
+- 调度顺序：默认先读档案库；仅在命中失败/写入失败/同名冲突时再调用 contacts MCP。
+- contacts MCP 保留为兜底能力；档案库用于主路径提效。
 
 ## 写入规则
 - People 字段必须写 open_id/user_id，禁止只写姓名。
